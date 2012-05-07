@@ -153,64 +153,6 @@ typedef enum _jobjectType {
 #define JNI_FALSE 0
 #define JNI_TRUE 1
 
-/*
- * possible return values for JNI functions.
- */
-
-#define JNI_OK           0                 /* success */
-#define JNI_ERR          (-1)              /* unknown error */
-#define JNI_EDETACHED    (-2)              /* thread detached from the VM */
-#define JNI_EVERSION     (-3)              /* JNI version error */
-#define JNI_ENOMEM       (-4)              /* not enough memory */
-#define JNI_EEXIST       (-5)              /* VM already created */
-#define JNI_EINVAL       (-6)              /* invalid arguments */
-
-/*
- * used in ReleaseScalarArrayElements
- */
-
-#define JNI_COMMIT 1
-#define JNI_ABORT 2
-
-/*
- * used in RegisterNatives to describe native method name, signature,
- * and function pointer.
- */
-
-typedef struct {
-    char *name;
-    char *signature;
-    void *fnPtr;
-} JNINativeMethod;
-
-/*
- * JNI Native Method Interface.
- */
-
-struct JNINativeInterface_;
-
-struct JNIEnv_;
-
-#ifdef __cplusplus
-typedef JNIEnv_ JNIEnv;
-#else
-typedef const struct JNINativeInterface_ *JNIEnv;
-#endif
-
-/*
- * JNI Invocation Interface.
- */
-
-struct JNIInvokeInterface_;
-
-struct JavaVM_;
-
-#ifdef __cplusplus
-typedef JavaVM_ JavaVM;
-#else
-typedef const struct JNIInvokeInterface_ *JavaVM;
-#endif
-
 struct JNINativeInterface_ {
     void *reserved0;
     void *reserved1;
